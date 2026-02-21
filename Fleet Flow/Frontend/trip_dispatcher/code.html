@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trip Dispatcher</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d93f2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101b22",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .ios-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header Section -->
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 py-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">Trip Dispatcher</h1>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white rounded-full p-2 flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<!-- Segmented Control -->
+<div class="mt-6">
+<div class="flex h-11 items-center justify-center rounded-xl bg-slate-200 dark:bg-slate-800 p-1">
+<button class="flex h-full grow items-center justify-center rounded-lg px-2 text-slate-500 dark:text-slate-400 text-sm font-semibold">
+                    Draft
+                </button>
+<button class="flex h-full grow items-center justify-center rounded-lg px-2 bg-background-light dark:bg-slate-700 text-primary dark:text-slate-100 shadow-sm text-sm font-bold">
+                    Dispatched
+                </button>
+<button class="flex h-full grow items-center justify-center rounded-lg px-2 text-slate-500 dark:text-slate-400 text-sm font-semibold">
+                    Completed
+                </button>
+</div>
+</div>
+</header>
+<!-- Main Content: Trip List -->
+<main class="flex-1 overflow-y-auto p-4 space-y-4 pb-32">
+<!-- Active Trip Card 1 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700 ios-shadow">
+<div class="flex justify-between items-start mb-3">
+<div>
+<span class="text-xs font-bold text-primary uppercase tracking-wider">In Progress</span>
+<h3 class="text-lg font-bold">Trip #TRP-8829</h3>
+</div>
+<div class="text-right text-slate-500 dark:text-slate-400">
+<p class="text-xs font-medium">ETA</p>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">14:30</p>
+</div>
+</div>
+<div class="flex items-center gap-3 mb-4 text-sm text-slate-600 dark:text-slate-400">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">person</span>
+                    John Doe
+                </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">tag</span>
+                    KXA-442
+                </div>
+</div>
+<div class="relative h-24 w-full rounded-lg overflow-hidden bg-slate-200 dark:bg-slate-900 mb-4">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Dynamic map showing current vehicle location" data-location="Chicago, IL" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAekIUtYxnCMZziMSMpLaYpcHCM-svF5jVFs54Mcyl6ZshV-2djyggC8VPj6UCr65f9VlWFewHRJxse0bznxbEBJrcFb_dKLzSlTixaL9JT_DINe4ZEHe9_ROuvEItIrprIdb6dDJ-XZYi6j5-IOth4a0E6YffUD2ktUSkHwDjq_5KsD0HgUd8jSv6K3i_vx-Zy3ahzRu2bvXKA_dQDoH55Cat0NrD1MDzpCDfxUwIsfV_D7Vac8Sc_5iK8JqxvI8ZF4Y-SBhc3c1jY')"></div>
+<div class="absolute top-2 left-2 bg-primary text-white text-[10px] px-2 py-0.5 rounded-full font-bold">Live</div>
+</div>
+<button class="w-full bg-slate-100 dark:bg-slate-700 py-2 rounded-lg font-bold text-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">map</span>
+                Track Live
+            </button>
+</div>
+<!-- Active Trip Card 2 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700 ios-shadow">
+<div class="flex justify-between items-start mb-3">
+<div>
+<span class="text-xs font-bold text-primary uppercase tracking-wider">Departing Soon</span>
+<h3 class="text-lg font-bold">Trip #TRP-9910</h3>
+</div>
+<div class="text-right text-slate-500 dark:text-slate-400">
+<p class="text-xs font-medium">ETA</p>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">16:15</p>
+</div>
+</div>
+<div class="flex items-center gap-3 mb-4 text-sm text-slate-600 dark:text-slate-400">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">person</span>
+                    Sarah Smith
+                </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">tag</span>
+                    LOB-993
+                </div>
+</div>
+<div class="relative h-24 w-full rounded-lg overflow-hidden bg-slate-200 dark:bg-slate-900 mb-4">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Route overview from warehouse to destination" data-location="Denver, CO" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCR_t11t1xQR1vK3Hpn2WAqdBx5BvaxC3DLYh4H9cqWP-nc3chnjQU5VV-1r6v-wvktXoVTQQjDZxWDrUGMZTdbsu5nDUVztzZdPj6kg3H9coGLPgPzLyDJ9j7_slFqKsK14c3hadN5H9E2kQGz_OGtwDC_syosCL9qX4iuj9OQMeM0JmmOerCWhbuNPwQ3Nu0UZBmAgtcjQSFFxFnPCQ2V2nsU7c5PdInKYbUh5ulJlwM6B_ACTZys9aRmcWqmpHXd1oLyk-89eSYW')"></div>
+</div>
+<button class="w-full bg-slate-100 dark:bg-slate-700 py-2 rounded-lg font-bold text-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">navigation</span>
+                View Route
+            </button>
+</div>
+</main>
+<!-- New Trip Form Overlay (Simplified for UI display) -->
+<div class="fixed inset-x-0 bottom-0 z-20 bg-white dark:bg-slate-900 rounded-t-[2rem] border-t border-slate-200 dark:border-slate-800 p-6 ios-shadow transform translate-y-0 transition-transform shadow-[0_-10px_40px_rgba(0,0,0,0.3)]">
+<div class="w-12 h-1 bg-slate-300 dark:bg-slate-700 rounded-full mx-auto mb-6"></div>
+<h2 class="text-xl font-bold mb-6">Create New Trip</h2>
+<form class="space-y-4">
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase text-slate-500 dark:text-slate-400 ml-1">Select Vehicle</label>
+<div class="relative">
+<select class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-xl py-3 px-4 appearance-none focus:ring-2 focus:ring-primary text-sm">
+<option>Mercedes Sprinter (KXA-442) - Available</option>
+<option>Volvo FH16 (LOB-993) - Available</option>
+<option>Scania R-Series - In Maintenance</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-3 text-slate-400 pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase text-slate-500 dark:text-slate-400 ml-1">Assign Driver</label>
+<div class="relative">
+<select class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-xl py-3 px-4 appearance-none focus:ring-2 focus:ring-primary text-sm">
+<option>John Doe</option>
+<option>Sarah Smith</option>
+<option>Mike Ross</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-3 text-slate-400 pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase text-slate-500 dark:text-slate-400 ml-1">Cargo Weight (t)</label>
+<input class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary text-sm" type="number" value="5.8"/>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase text-slate-500 dark:text-slate-400 ml-1">Max Capacity (t)</label>
+<input class="w-full bg-slate-200 dark:bg-slate-700 border-none rounded-xl py-3 px-4 text-sm opacity-60" disabled="" type="number" value="5.0"/>
+</div>
+</div>
+<!-- Validation Message Area -->
+<div class="bg-red-500/10 border border-red-500/20 rounded-xl p-3 flex items-start gap-3">
+<span class="material-symbols-outlined text-red-500">warning</span>
+<div>
+<p class="text-red-500 text-xs font-bold uppercase leading-none mb-1">Warning: Weight Limit Exceeded</p>
+<p class="text-red-400 text-xs leading-tight">Cargo (5.8t) exceeds vehicle capacity (5.0t). Please reduce load or select a larger vehicle.</p>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-4 rounded-xl font-bold shadow-lg shadow-primary/30 transition-all active:scale-[0.98]" type="button">
+                Dispatch Trip
+            </button>
+</form>
+</div>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 w-full bg-slate-50/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 px-6 py-3 pb-8 flex justify-between items-center z-30">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">list_alt</span>
+<span class="text-[10px] font-bold">Trips</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">fire_truck</span>
+<span class="text-[10px] font-bold">Fleet</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-bold">Drivers</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold">Settings</span>
+</a>
+</nav>
+</body></html>

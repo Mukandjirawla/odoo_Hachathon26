@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vehicle Registry - Fleet Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d93f2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101b22",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-300">
+<div class="relative flex h-screen w-full flex-col overflow-hidden max-w-md mx-auto border-x border-slate-200 dark:border-slate-800 shadow-2xl">
+<!-- Header -->
+<header class="flex items-center justify-between px-6 py-4 bg-background-light dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 sticky top-0 z-20">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">menu</span>
+</button>
+<h1 class="text-lg font-bold tracking-tight text-slate-900 dark:text-slate-100">Vehicle Registry</h1>
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">search</span>
+</button>
+</header>
+<!-- Main Scrollable Content -->
+<main class="flex-1 overflow-y-auto hide-scrollbar pb-24">
+<!-- Filter Section -->
+<div class="p-4">
+<div class="flex items-center justify-between p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 shadow-sm">
+<div class="flex flex-col gap-0.5">
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">Out of Service Only</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Filter assets currently unavailable</p>
+</div>
+<label class="relative flex h-7 w-12 cursor-pointer items-center rounded-full bg-slate-200 dark:bg-slate-700 p-1 transition-colors has-[:checked]:bg-primary">
+<input class="sr-only peer" type="checkbox"/>
+<div class="h-5 w-5 rounded-full bg-white shadow-sm transition-transform peer-checked:translate-x-5"></div>
+</label>
+</div>
+</div>
+<!-- Stats Bar (Quick Glance) -->
+<div class="px-4 mb-4">
+<div class="flex gap-2 overflow-x-auto hide-scrollbar">
+<div class="flex-none px-4 py-2 rounded-lg bg-primary/10 border border-primary/20 text-primary text-xs font-semibold">
+                        Total: 24
+                    </div>
+<div class="flex-none px-4 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-xs font-semibold">
+                        Available: 18
+                    </div>
+<div class="flex-none px-4 py-2 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs font-semibold">
+                        On Trip: 4
+                    </div>
+<div class="flex-none px-4 py-2 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-500 text-xs font-semibold">
+                        In Shop: 2
+                    </div>
+</div>
+</div>
+<!-- Vehicle List -->
+<div class="flex flex-col gap-4 px-4">
+<!-- Card 1: Available -->
+<div class="group flex flex-col overflow-hidden rounded-xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all shadow-sm">
+<div class="h-32 w-full bg-slate-200 dark:bg-slate-800 relative overflow-hidden">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" data-alt="Modern white semi-truck on road" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmlM8gHM-Sy6nk6Uw5DFiQVCgVFi-zczcDkXOxYg3mommKQYDLCa8CO-DRmUIWC-hY-spBopVyoJEjPKz845VnniOGWXxAPkZKEgoo_xs72pxqrIT_FQ8RNRK9zoH9EWF8hcW_rhmfAfWkmMkM0rm0W4HNYqy5WAAwQm1urMmfUq035Qcck717XwFCmjsrCwhxckTyPpVvFJJPQKdwWi73hCmbe39jbkKit1JtRkaSYKvvWB55uen7X0qS1ZKJh7QLjX73dZKtsO3N"/>
+<div class="absolute top-3 right-3">
+<span class="px-2 py-1 rounded bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-wider">Available</span>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-bold text-slate-900 dark:text-slate-100 text-base leading-tight">Freightliner Cascadia</h3>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400">ABC-1234 • 2023 Model</p>
+</div>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-2 border-t border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">weight</span>
+<div>
+<p class="text-[10px] uppercase text-slate-400 font-bold">Max Load</p>
+<p class="text-sm font-semibold dark:text-slate-200">20,000 lbs</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">speed</span>
+<div>
+<p class="text-[10px] uppercase text-slate-400 font-bold">Odometer</p>
+<p class="text-sm font-semibold dark:text-slate-200">145,200 mi</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: On Trip -->
+<div class="group flex flex-col overflow-hidden rounded-xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 transition-all shadow-sm">
+<div class="h-32 w-full bg-slate-200 dark:bg-slate-800 relative overflow-hidden">
+<img class="w-full h-full object-cover opacity-80" data-alt="Blue heavy duty truck on highway" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-nFkJmgi1FFgfk-VSQX-ivm47KfTIM0EBoisnD4DFXHyKlin9_kxrgNraRfdnGtcQTYzjBLhN8oQ_3PHuSfkN8BYZr1zw_md6f7UwrmAg3PKldE7-rPkNfqGj48NeLxRz0jOtkZ2yHm0xUDREZkdxQywJb2504P7a1uj0dm2nwt9EsBvufkJbPjxnewILlTkpP0XV1WLs3VL-wJxPXE2es8N5PM311R72k7RuJVSRx9ew7K-y3Zi1TsVQouhYXAN6SOkGRpxuQb2X"/>
+<div class="absolute top-3 right-3">
+<span class="px-2 py-1 rounded bg-primary text-white text-[10px] font-bold uppercase tracking-wider">On Trip</span>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-bold text-slate-900 dark:text-slate-100 text-base leading-tight">Kenworth T680</h3>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400">XYZ-5678 • 2022 Model</p>
+</div>
+<button class="text-slate-400 transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-2 border-t border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">weight</span>
+<div>
+<p class="text-[10px] uppercase text-slate-400 font-bold">Max Load</p>
+<p class="text-sm font-semibold dark:text-slate-200">22,500 lbs</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">speed</span>
+<div>
+<p class="text-[10px] uppercase text-slate-400 font-bold">Odometer</p>
+<p class="text-sm font-semibold dark:text-slate-200">89,400 mi</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: In Shop -->
+<div class="group flex flex-col overflow-hidden rounded-xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 transition-all shadow-sm">
+<div class="h-32 w-full bg-slate-200 dark:bg-slate-800 relative overflow-hidden">
+<img class="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 transition-all" data-alt="Truck being repaired in garage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_VQR6LkRU3xuF8EduQ8PEfvypGIs3Alg3MU_4vQAAMdOtA7mZDDDQ6nAOo9v4Jk07okIQNXb9U8ZNCytsXERQpLJv-BR_vZNv8mOFfhkNrGf2-pELgY_oNxPdlD36Sqo-Up9VvydsFoTBvDwkqI_oDmAsVkzmrPCRJlU6YYdBrzipcdOCy49GLsRp9F7IX8vI6mUChzMkGx3M_Ex6qZIQoFB8KopgjyGEZPH3gc_tzYK9qj6qG4ECiNSbNzGYdMl1upXU-q63QF6R"/>
+<div class="absolute top-3 right-3">
+<span class="px-2 py-1 rounded bg-rose-500 text-white text-[10px] font-bold uppercase tracking-wider">In Shop</span>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-bold text-slate-900 dark:text-slate-100 text-base leading-tight">Peterbilt 579</h3>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400">DEF-9012 • 2021 Model</p>
+</div>
+<button class="text-slate-400 transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-2 border-t border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">weight</span>
+<div>
+<p class="text-[10px] uppercase text-slate-400 font-bold">Max Load</p>
+<p class="text-sm font-semibold dark:text-slate-200">21,000 lbs</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">speed</span>
+<div>
+<p class="text-[10px] uppercase text-slate-400 font-bold">Odometer</p>
+<p class="text-sm font-semibold dark:text-slate-200">210,800 mi</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="absolute bottom-24 right-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-lg active:scale-95 transition-transform z-30">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- Bottom Tab Bar -->
+<nav class="absolute bottom-0 w-full bg-white dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 px-6 pt-2 pb-6 flex justify-between items-center z-20">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">local_shipping</span>
+<span class="text-[10px] font-bold">Fleet</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">route</span>
+<span class="text-[10px] font-bold">Trips</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">build</span>
+<span class="text-[10px] font-bold">Service</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold">Settings</span>
+</a>
+</nav>
+<!-- iOS Home Indicator Area -->
+<div class="absolute bottom-1 left-1/2 -translate-x-1/2 w-32 h-1 bg-slate-300 dark:bg-slate-700 rounded-full z-30"></div>
+</div>
+</body></html>

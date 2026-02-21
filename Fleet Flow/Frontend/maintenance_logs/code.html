@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maintenance Logs - Fleet Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d93f2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101b22",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<!-- Main Container -->
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden pb-24">
+<!-- Header Section -->
+<header class="sticky top-0 z-20 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 py-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight">Maintenance Logs</h1>
+</div>
+<button class="flex items-center justify-center size-10 rounded-full bg-primary text-white shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</header>
+<!-- Search & Quick Filters -->
+<div class="px-4 py-4 space-y-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full bg-slate-100 dark:bg-slate-800/50 border-none rounded-xl py-3 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary transition-all placeholder:text-slate-500" placeholder="Search vehicle ID or service type..." type="text"/>
+</div>
+<!-- Horizontal Filter Chips -->
+<div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1">
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary text-white text-sm font-semibold whitespace-nowrap">
+                    All Logs
+                </button>
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-sm font-medium whitespace-nowrap border border-transparent hover:border-primary/30">
+                    Scheduled
+                    <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-sm font-medium whitespace-nowrap border border-transparent hover:border-primary/30">
+                    In Shop
+                    <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-sm font-medium whitespace-nowrap border border-transparent hover:border-primary/30">
+                    Completed
+                    <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Warning Component: In-Shop Availability -->
+<div class="px-4 py-2">
+<div class="bg-primary/10 border border-primary/20 rounded-xl p-4 flex gap-4 items-start">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary">info</span>
+</div>
+<div class="flex-1">
+<h3 class="text-sm font-bold text-primary">Service Status Impact</h3>
+<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-1">
+                        Selecting a vehicle for service will change its status to <span class="font-bold text-slate-900 dark:text-slate-100">In Shop</span>, making it unavailable for dispatch until marked as completed.
+                    </p>
+<button class="mt-3 text-xs font-bold text-primary hover:underline">Learn more</button>
+</div>
+</div>
+</div>
+<!-- Maintenance Log List -->
+<main class="flex-1 px-4 py-4 space-y-4">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Recent Records</h2>
+<span class="text-xs text-slate-400">12 Logs found</span>
+</div>
+<!-- Log Card 1: In Shop -->
+<div class="bg-white dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between mb-3">
+<div class="flex items-center gap-3">
+<div class="size-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500">
+<span class="material-symbols-outlined text-2xl">build</span>
+</div>
+<div>
+<h4 class="font-bold text-base leading-tight">Truck-0822</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400">Freightliner Cascadia 2023</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-500 text-[10px] font-bold uppercase tracking-wider border border-amber-500/20">In Shop</span>
+</div>
+<div class="grid grid-cols-2 gap-4 py-3 border-y border-slate-100 dark:border-slate-800/60">
+<div>
+<p class="text-[10px] uppercase text-slate-400 font-bold mb-0.5">Service Type</p>
+<p class="text-sm font-medium">Brake System Flush</p>
+</div>
+<div>
+<p class="text-[10px] uppercase text-slate-400 font-bold mb-0.5">Est. Ready</p>
+<p class="text-sm font-medium">Today, 4:00 PM</p>
+</div>
+</div>
+<div class="flex items-center justify-between mt-3">
+<div class="flex items-center gap-1.5 text-slate-500">
+<span class="material-symbols-outlined text-sm">person</span>
+<span class="text-xs font-medium">Dave Miller</span>
+</div>
+<button class="text-primary text-xs font-bold flex items-center gap-1">
+                        View Details
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Log Card 2: Completed -->
+<div class="bg-white dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm">
+<div class="flex items-start justify-between mb-3">
+<div class="flex items-center gap-3">
+<div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">oil_barrel</span>
+</div>
+<div>
+<h4 class="font-bold text-base leading-tight">Van-4401</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400">Mercedes Sprinter 2022</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-green-500/10 text-green-500 text-[10px] font-bold uppercase tracking-wider border border-green-500/20">Completed</span>
+</div>
+<div class="grid grid-cols-2 gap-4 py-3 border-y border-slate-100 dark:border-slate-800/60">
+<div>
+<p class="text-[10px] uppercase text-slate-400 font-bold mb-0.5">Service Type</p>
+<p class="text-sm font-medium">Oil &amp; Filter Change</p>
+</div>
+<div>
+<p class="text-[10px] uppercase text-slate-400 font-bold mb-0.5">Date</p>
+<p class="text-sm font-medium">Oct 24, 2023</p>
+</div>
+</div>
+<div class="flex items-center justify-between mt-3">
+<div class="flex items-center gap-1.5 text-slate-500">
+<span class="material-symbols-outlined text-sm">payments</span>
+<span class="text-xs font-medium font-display">$185.00</span>
+</div>
+<button class="text-primary text-xs font-bold flex items-center gap-1">
+                        View Receipt
+                        <span class="material-symbols-outlined text-xs">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Log Card 3: Scheduled -->
+<div class="bg-white dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm opacity-80">
+<div class="flex items-start justify-between mb-3">
+<div class="flex items-center gap-3">
+<div class="size-12 rounded-xl bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-500">
+<span class="material-symbols-outlined text-2xl">tire_repair</span>
+</div>
+<div>
+<h4 class="font-bold text-base leading-tight">Rig-9021</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400">Kenworth T680</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-500 text-[10px] font-bold uppercase tracking-wider border border-slate-300 dark:border-slate-600">Scheduled</span>
+</div>
+<div class="grid grid-cols-2 gap-4 py-3 border-y border-slate-100 dark:border-slate-800/60">
+<div>
+<p class="text-[10px] uppercase text-slate-400 font-bold mb-0.5">Service Type</p>
+<p class="text-sm font-medium">Tire Rotation</p>
+</div>
+<div>
+<p class="text-[10px] uppercase text-slate-400 font-bold mb-0.5">Appt Time</p>
+<p class="text-sm font-medium">Oct 30, 9:00 AM</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-30 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 px-2 pb-6 pt-2">
+<div class="flex justify-around items-end">
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Fleet</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined fill-[1]">assignment</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Logs</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Map</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Log Service Button (Floating Action) -->
+<div class="fixed bottom-24 right-4 z-10">
+<button class="bg-primary hover:bg-primary/90 text-white flex items-center gap-2 px-6 py-4 rounded-full shadow-2xl shadow-primary/40 active:scale-95 transition-all">
+<span class="material-symbols-outlined">post_add</span>
+<span class="font-bold text-sm">Log Service</span>
+</button>
+</div>
+</div>
+</body></html>

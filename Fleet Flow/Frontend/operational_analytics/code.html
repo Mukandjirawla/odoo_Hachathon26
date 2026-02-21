@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Operational Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d93f2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101b22",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header Section -->
+<header class="flex items-center justify-between p-4 bg-background-light dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100 cursor-pointer">arrow_back_ios</span>
+<h1 class="text-xl font-bold tracking-tight">Operational Analytics</h1>
+</div>
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">account_circle</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto pb-24">
+<!-- Tab Navigation -->
+<div class="px-4 mt-2">
+<div class="flex border-b border-slate-200 dark:border-slate-800">
+<button class="flex-1 py-3 text-sm font-bold border-b-2 border-transparent text-slate-500 dark:text-slate-400">Daily</button>
+<button class="flex-1 py-3 text-sm font-bold border-b-2 border-primary text-primary">Weekly</button>
+<button class="flex-1 py-3 text-sm font-bold border-b-2 border-transparent text-slate-500 dark:text-slate-400">Monthly</button>
+</div>
+</div>
+<!-- KPI Summary Cards -->
+<section class="flex gap-4 p-4">
+<div class="flex-1 bg-white dark:bg-slate-800/50 rounded-xl p-4 border border-slate-200 dark:border-slate-800">
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 uppercase tracking-wider">Total Fleet ROI</p>
+<p class="text-2xl font-bold">$42,850</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-emerald-500 text-sm">trending_up</span>
+<p class="text-emerald-500 text-xs font-bold">+12.5%</p>
+</div>
+</div>
+<div class="flex-1 bg-white dark:bg-slate-800/50 rounded-xl p-4 border border-slate-200 dark:border-slate-800">
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 uppercase tracking-wider">Avg. Efficiency</p>
+<p class="text-2xl font-bold">14.2 km/L</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-rose-500 text-sm">trending_down</span>
+<p class="text-rose-500 text-xs font-bold">-2.1%</p>
+</div>
+</div>
+</section>
+<!-- Charts Section -->
+<div class="space-y-6 px-4">
+<!-- Fuel Efficiency Chart -->
+<section class="bg-white dark:bg-slate-800/50 rounded-xl p-4 border border-slate-200 dark:border-slate-800">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-base font-bold">Fuel Efficiency (km/L)</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Last 7 days performance</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">info</span>
+</div>
+<div class="relative h-40 w-full mb-4">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 400 150">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#0d93f2" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#0d93f2" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,120 Q50,40 100,80 T200,60 T300,100 T400,20 V150 H0 Z" fill="url(#chartGradient)"></path>
+<path d="M0,120 Q50,40 100,80 T200,60 T300,100 T400,20" fill="none" stroke="#0d93f2" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+</div>
+<div class="flex justify-between text-[10px] font-bold text-slate-400 uppercase">
+<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</section>
+<!-- Vehicle ROI Chart -->
+<section class="bg-white dark:bg-slate-800/50 rounded-xl p-4 border border-slate-200 dark:border-slate-800">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-base font-bold">Vehicle ROI by Unit</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Top contributors this month</p>
+</div>
+<span class="text-primary text-xs font-bold uppercase cursor-pointer">View All</span>
+</div>
+<div class="flex items-end justify-between h-32 gap-3 mb-2 px-2">
+<div class="flex flex-col items-center flex-1">
+<div class="w-full bg-primary/20 rounded-t-lg relative" style="height: 100%;">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg" style="height: 85%;"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400 mt-2">V-01</span>
+</div>
+<div class="flex flex-col items-center flex-1">
+<div class="w-full bg-primary/20 rounded-t-lg relative" style="height: 60%;">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg" style="height: 70%;"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400 mt-2">V-02</span>
+</div>
+<div class="flex flex-col items-center flex-1">
+<div class="w-full bg-primary/20 rounded-t-lg relative" style="height: 80%;">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg" style="height: 40%;"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400 mt-2">V-03</span>
+</div>
+<div class="flex flex-col items-center flex-1">
+<div class="w-full bg-primary/20 rounded-t-lg relative" style="height: 100%;">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg" style="height: 95%;"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400 mt-2">V-04</span>
+</div>
+<div class="flex flex-col items-center flex-1">
+<div class="w-full bg-primary/20 rounded-t-lg relative" style="height: 50%;">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg" style="height: 60%;"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400 mt-2">V-05</span>
+</div>
+</div>
+</section>
+<!-- Generate Report Section -->
+<section class="bg-primary/5 dark:bg-primary/10 rounded-xl p-5 border border-primary/20">
+<div class="mb-4">
+<h3 class="text-base font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">description</span>
+                        Generate Reports
+                    </h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Export fleet data for payroll, tax audits, and financial summaries.</p>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 bg-white dark:bg-slate-800 py-3 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary">table_view</span>
+<span class="text-sm font-bold">Export CSV</span>
+</button>
+<button class="flex items-center justify-center gap-2 bg-primary text-white py-3 rounded-lg shadow-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+<span class="text-sm font-bold">Export PDF</span>
+</button>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full bg-white dark:bg-[#1b2227] border-t border-slate-200 dark:border-[#283239] pb-safe-area">
+<div class="flex justify-around items-center px-4 py-2">
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-[#9cadba]" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+<span class="text-[10px] font-medium">Fleet</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">bar_chart</span>
+<span class="text-[10px] font-bold">Analytics</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-[#9cadba]" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px] font-medium">Reports</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-[#9cadba]" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Background Pattern Decorative Element -->
+<div class="fixed top-0 left-0 w-full h-full -z-10 opacity-5 dark:opacity-10 pointer-events-none">
+<div class="absolute inset-0 bg-[radial-gradient(#0d93f2_1px,transparent_1px)] [background-size:20px_20px]" data-alt="Subtle dot grid background pattern"></div>
+</div>
+</body></html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Command Center Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d93f2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101b22",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header Section -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center justify-between px-4 py-4">
+<div class="flex items-center gap-3">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary text-2xl">monitoring</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">Command Center</h1>
+</div>
+<button class="relative p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">notifications</span>
+<span class="absolute top-2 right-2 flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto pb-24">
+<!-- Search & Filter Section -->
+<div class="px-4 py-4 space-y-4">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-xl py-3 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary transition-all placeholder:text-slate-500" placeholder="Search vehicles, drivers, or trips" type="text"/>
+</div>
+<div class="flex gap-2 overflow-x-auto hide-scrollbar">
+<button class="flex items-center gap-1.5 px-5 py-2 rounded-full bg-primary text-white text-sm font-semibold whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">grid_view</span> All
+                </button>
+<button class="flex items-center gap-1.5 px-5 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-medium whitespace-nowrap hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-sm">local_shipping</span> Truck
+                </button>
+<button class="flex items-center gap-1.5 px-5 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-medium whitespace-nowrap hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-sm">airport_shuttle</span> Van
+                </button>
+<button class="flex items-center gap-1.5 px-5 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-medium whitespace-nowrap hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-sm">pedal_bike</span> Bike
+                </button>
+</div>
+</div>
+<!-- KPI Grid -->
+<div class="px-4 grid grid-cols-2 gap-3 mb-6">
+<!-- Active Fleet -->
+<div class="bg-white dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-emerald-500 bg-emerald-500/10 p-1.5 rounded-lg">route</span>
+<span class="text-[10px] font-bold text-emerald-500 uppercase tracking-wider">On Trip</span>
+</div>
+<div class="text-2xl font-bold mb-1">42</div>
+<div class="text-xs text-slate-500 dark:text-slate-400">Active Fleet</div>
+</div>
+<!-- Maintenance Alerts -->
+<div class="bg-white dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-amber-500 bg-amber-500/10 p-1.5 rounded-lg">build</span>
+<span class="text-[10px] font-bold text-amber-500 uppercase tracking-wider">In Shop</span>
+</div>
+<div class="text-2xl font-bold mb-1">05</div>
+<div class="text-xs text-slate-500 dark:text-slate-400">Maintenance Alerts</div>
+</div>
+<!-- Utilization Rate -->
+<div class="bg-white dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-1.5 rounded-lg">speed</span>
+<span class="text-[10px] font-bold text-primary uppercase tracking-wider">Weekly</span>
+</div>
+<div class="text-2xl font-bold mb-1">88<span class="text-sm font-medium text-slate-500">%</span></div>
+<div class="text-xs text-slate-500 dark:text-slate-400">Utilization Rate</div>
+</div>
+<!-- Pending Cargo -->
+<div class="bg-white dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-purple-500 bg-purple-500/10 p-1.5 rounded-lg">package_2</span>
+<span class="text-[10px] font-bold text-purple-500 uppercase tracking-wider">Queue</span>
+</div>
+<div class="text-2xl font-bold mb-1">12</div>
+<div class="text-xs text-slate-500 dark:text-slate-400">Pending Cargo</div>
+</div>
+</div>
+<!-- Recent Activity -->
+<div class="px-4">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-bold">Recent Activity</h3>
+<button class="text-primary text-sm font-semibold">View All</button>
+</div>
+<div class="space-y-3">
+<!-- Activity Item 1 -->
+<div class="flex items-center gap-4 p-3 bg-white dark:bg-slate-800/30 rounded-xl border border-slate-100 dark:border-slate-800">
+<div class="flex-shrink-0 w-12 h-12 bg-slate-100 dark:bg-slate-700 rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Portrait of a male driver smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF7tJ8efH1ApiKL2b1vxmiriHNHLBoqJT3tZjqoiRWH9ygrsCyLA6JU-qwRs2pR1-8Nbo32ldEiJw3baD0Kj6ISNO8Ge7Tt47rSQhJXRCev_rhmArpD_Vwlk2v7tyzaGuZLg9g8v7Ns7cJC6YJMkTM9m9WJEBXh1KXuveY9WaXVQbW-Xq0YLkvqYq3Kyptr5qEP9vy6SpjZ8z8CBMKOPLF0yRWahlSVFIKTkJBEIs_xCe-_4lmgEKuVR5JTgP_-ycZAJah9uCTJxiT"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-sm font-bold">Truck #402 Reached Depot A</p>
+<span class="text-[10px] text-slate-500">2m ago</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Driver: Marcus Chen • En Route</p>
+</div>
+<span class="material-symbols-outlined text-primary text-xl">chevron_right</span>
+</div>
+<!-- Activity Item 2 -->
+<div class="flex items-center gap-4 p-3 bg-white dark:bg-slate-800/30 rounded-xl border border-slate-100 dark:border-slate-800">
+<div class="flex-shrink-0 w-12 h-12 bg-slate-100 dark:bg-slate-700 rounded-lg overflow-hidden flex items-center justify-center">
+<span class="material-symbols-outlined text-amber-500">warning</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-sm font-bold">Low Fuel Alert: Van #12</p>
+<span class="text-[10px] text-slate-500">15m ago</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Location: North Highway Sector 4</p>
+</div>
+<span class="material-symbols-outlined text-primary text-xl">chevron_right</span>
+</div>
+<!-- Activity Item 3 -->
+<div class="flex items-center gap-4 p-3 bg-white dark:bg-slate-800/30 rounded-xl border border-slate-100 dark:border-slate-800">
+<div class="flex-shrink-0 w-12 h-12 bg-slate-100 dark:bg-slate-700 rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Portrait of a female driver professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpQfzhD0RMJJ2HV7s_PLyn5JQHgNsZebc3psmy9ZgzFSqRw7s8fYxKwktOk_JLfmd08Q4sFDORRw5zTecJjywQnpzq_cWELQAnyxpngHZVkCLxOB6CyD_nM4X4DJanzG3vIQK_WleFJUGy99McfC-5Mzfqd1XB6Ai05mstV4eeSFoC1hkJv1yh_SNKmb2oYV1MLc3_Ofn2mp8UjhZbO_m5SpkFxzASHArxLrYrGVEux264sk3Ng4_BKMB_GBEOca-Z3ZrlsymRFc-s"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-sm font-bold">Cargo Delivered: Order #821</p>
+<span class="text-[10px] text-slate-500">42m ago</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Driver: Sarah Jenkins • Completed</p>
+</div>
+<span class="material-symbols-outlined text-primary text-xl">chevron_right</span>
+</div>
+<!-- Activity Item 4 -->
+<div class="flex items-center gap-4 p-3 bg-white dark:bg-slate-800/30 rounded-xl border border-slate-100 dark:border-slate-800">
+<div class="flex-shrink-0 w-12 h-12 bg-slate-100 dark:bg-slate-700 rounded-lg overflow-hidden flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-500">task_alt</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-sm font-bold">Maintenance Complete</p>
+<span class="text-[10px] text-slate-500">1h ago</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Truck #104 is back in service</p>
+</div>
+<span class="material-symbols-outlined text-primary text-xl">chevron_right</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-background-dark/95 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 px-6 pt-2 pb-6 safe-area-bottom">
+<div class="flex justify-between items-center max-w-lg mx-auto">
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-primary fill-1">dashboard</span>
+<span class="text-[10px] font-bold text-primary">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 group text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="text-[10px] font-medium">Map</span>
+</a>
+<a class="flex flex-col items-center gap-1 group text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+<span class="text-[10px] font-medium">Fleet</span>
+</a>
+<a class="flex flex-col items-center gap-1 group text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">package_2</span>
+<span class="text-[10px] font-medium">Cargo</span>
+</a>
+<a class="flex flex-col items-center gap-1 group text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</div>
+</nav>
+<style>
+        .fill-1 { font-variation-settings: 'FILL' 1; }
+        .safe-area-bottom {
+            padding-bottom: env(safe-area-inset-bottom, 1.5rem);
+        }
+    </style>
+</body></html>

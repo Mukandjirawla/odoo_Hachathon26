@@ -99,5 +99,5 @@ Open **http://localhost:5173** in your browser.
 │           ├── TripExpenses.jsx
 │           ├── DriverPerformance.jsx
 │           └── Analytics.jsx
-└── stitch/                 # Original Stitch.ai mockups
+                
 ```
